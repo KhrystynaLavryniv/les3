@@ -20,6 +20,7 @@ const userSchema = Schema(
     token: {
       type: String,
     },
+    roles: [{ type: String, ref: "role" }],
   },
   { versionKey: false, timestamps: true }
 );

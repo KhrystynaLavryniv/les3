@@ -4,9 +4,11 @@
 // update
 // remove
 const BooksController = require("../controllers/BooksController");
+const authVerify = require("../midllewares/authVerify");
 const router = require("express").Router();
+const rolesVerify = require("../midllewares/rolesVerify");
 
-router.post("/", BooksController.add);
+router.post("/", authVerify, rolesVerify(["ADMIN"]), BooksController.add); //only for admin
 
 router.get("/", BooksController.getAll);
 
